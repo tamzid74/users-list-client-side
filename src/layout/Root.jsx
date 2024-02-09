@@ -3,10 +3,10 @@ import Navbar from "../navbar/Navbar";
 
 const Root = () => {
   return (
-    <div>
+    <>
       <Navbar></Navbar>
       <Outlet></Outlet>
-    </div>
+    </>
   );
 };
 
