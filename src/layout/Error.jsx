@@ -11,7 +11,7 @@ const Error = () => {
         </div>
         <div className="flex justify-start mt-10">
           <Link to="/">
-            <button className="btn btn-outline">
+            <button className="btn btn-primary btn-sm btn-outline">
               <AiOutlineArrowLeft /> Go Back home
             </button>
           </Link>
