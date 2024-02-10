@@ -161,7 +161,7 @@ const UserAddedModal = () => {
                   {/* {row-6} */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Company Name</span>
+                      <span className="label-text text-white">Company Name</span>
                     </label>
                     <label className="input-group">
                       <input
