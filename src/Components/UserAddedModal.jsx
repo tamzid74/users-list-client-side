@@ -18,6 +18,7 @@ const UserAddedModal = () => {
       companyName: data.companyName,
     };
     console.log(newUser);
+    const toastId = toast.loading("Users Creating...");
     fetch("https://dummyjson.com/users/add", {
       method: "POST",
       headers: {
@@ -27,7 +28,7 @@ const UserAddedModal = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Successfully toasted!");
+        toast.success("Successfully added the Users!", { id: toastId });
         reset();
         // setIsOpen(false);
         console.log(data);
