@@ -1,4 +1,4 @@
-# Users-list-client-side
+# Users List Application
 
  This is a simple user list application built using ReactJS. It allows users to view a list of users, search for users by name, sort users by different criteria, view user details, and add new users.
  
