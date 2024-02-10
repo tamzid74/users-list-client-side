@@ -4,14 +4,33 @@ import UserCard from "../Components/userCard/UserCard";
 import Lottie from "lottie-react";
 import userNotFound from "../assets/images/no user found.json";
 import UserAddedModal from "../Components/UserAddedModal";
+import { IoMdArrowDropupCircle } from "react-icons/io";
 
 const Users = () => {
+  const [topButton, setTopButton] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortOption, setSortOption] = useState("Sort by name");
 
+  // scroll top button
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setTopButton(true);
+      } else {
+        setTopButton(false);
+      }
+    });
+  }, []);
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   //   fetching data here
   useEffect(() => {
     setIsLoading(true);
@@ -112,6 +131,14 @@ const Users = () => {
             <UserCard key={index} user={user} />
           ))}
         </div>
+      )}
+      {topButton && (
+        <button
+          className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
+          onClick={scrollUp}
+        >
+          <IoMdArrowDropupCircle />
+        </button>
       )}
     </div>
   );
