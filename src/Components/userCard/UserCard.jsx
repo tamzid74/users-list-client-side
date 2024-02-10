@@ -14,7 +14,7 @@ const UserCard = ({ user }) => {
   return (
     <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg ">
       <img
-        className="object-fill object-center w-full h-56"
+        className="object-cover object-center"
         src={image}
         alt="avatar"
       />

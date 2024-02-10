@@ -3,6 +3,7 @@ import { CiSearch } from "react-icons/ci";
 import UserCard from "../Components/userCard/UserCard";
 import Lottie from "lottie-react";
 import userNotFound from "../assets/images/no user found.json";
+import UserAddedModal from "../Components/UserAddedModal";
 
 const Users = () => {
   const [search, setSearch] = useState("");
@@ -65,6 +66,10 @@ const Users = () => {
       <h1 className=" text-center font-semibold text-5xl text-primary mb-5">
         All Users
       </h1>
+      {/* added modal for add a user */}
+      <div>
+        <UserAddedModal />
+      </div>
       <div className="flex justify-between flex-col md:flex-row">
         <div className="relative">
           <input
