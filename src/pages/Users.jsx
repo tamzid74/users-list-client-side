@@ -18,9 +18,9 @@ const Users = () => {
     fetch("https://dummyjson.com/users")
       .then((res) => res.json())
       .then((data) => {
-        setUsers(data.users);
-        console.log(data.users);
-        setFilteredUsers(data.users);
+        setUsers(data?.users);
+        // console.log(data?.users);
+        setFilteredUsers(data?.users);
         setIsLoading(false);
       });
   }, []);

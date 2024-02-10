@@ -66,7 +66,7 @@ const UserCard = ({ user }) => {
           </svg>
 
           <h1 className="px-2 text-sm">
-            {address.address}, {address.city}
+            {address?.address}, {address?.city}
           </h1>
         </div>
 
@@ -86,7 +86,7 @@ const UserCard = ({ user }) => {
             />
           </svg>
 
-          <h1 className="px-2 text-sm">{company.name}</h1>
+          <h1 className="px-2 text-sm">{company?.name}</h1>
         </div>
       </div>
     </div>

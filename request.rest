@@ -1,0 +1,8 @@
+###
+GET https://dummyjson.com/users
+###
+POST https://dummyjson.com/users/add
+Content-Type: application/json
+{
+    
+}
