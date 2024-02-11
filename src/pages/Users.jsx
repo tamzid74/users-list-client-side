@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
 import UserCard from "../Components/userCard/UserCard";
 import Lottie from "lottie-react";
 import userNotFound from "../assets/images/no user found.json";
 import UserAddedModal from "../Components/UserAddedModal";
-import { IoMdArrowDropupCircle } from "react-icons/io";
+import ScrollTopButton from "../Components/ScrollTopButton";
+import SearchUsers from "../Components/SearchUsers";
+import SortUser from "../Components/SortUser";
 
 const Users = () => {
   const [topButton, setTopButton] = useState(false);
@@ -50,9 +51,9 @@ const Users = () => {
     filterUsers(e.target.value);
   };
   // Function to filter users based on search input
-  const filterUsers = (searchTerm) => {
+  const filterUsers = (search) => {
     const filtered = users.filter((user) =>
-      user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+      user.firstName.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredUsers(filtered);
   };
@@ -89,37 +90,17 @@ const Users = () => {
       <div>
         <UserAddedModal />
       </div>
+      {/* added search and sort */}
       <div className="flex justify-between flex-col md:flex-row">
-        <div className="relative">
-          <input
-            type="text"
-            value={search}
-            onChange={handleSearchChange}
-            placeholder="Search By Name..."
-            className="input input-bordered w-full max-w-sm input-sm md:input-md mb-5"
-          />
-          <span className="absolute top-2 md:top-4 right-2">
-            <CiSearch className="text-base font-bold" />
-          </span>
-        </div>
-        <div>
-          <select
-            className="select select-bordered w-full max-w-sm select-sm md:select-md mb-5"
-            value={sortOption}
-            onChange={handleSortChange}
-          >
-            <option>Sort by name</option>
-            <option>Sort by email</option>
-            <option>Sort by Company name</option>
-          </select>
-        </div>
+        <SearchUsers value={search} onChange={handleSearchChange} />
+        <SortUser value={sortOption} onChange={handleSortChange} />
       </div>
       {isLoading ? (
         <div className="text-7xl min-h-screen flex items-center justify-center">
           <span className="loading loading-bars loading-lg"></span>
         </div>
       ) : filteredUsers.length === 0 ? (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center">
           <div className="lottie w-[500px] ">
             <Lottie animationData={userNotFound} loop={true}></Lottie>
             <h1 className="text-center text-5xl font-bold">User Not Found</h1>
@@ -132,14 +113,7 @@ const Users = () => {
           ))}
         </div>
       )}
-      {topButton && (
-        <button
-          className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
-          onClick={scrollUp}
-        >
-          <IoMdArrowDropupCircle />
-        </button>
-      )}
+      {topButton && <ScrollTopButton onClick={scrollUp} />}
     </div>
   );
 };
